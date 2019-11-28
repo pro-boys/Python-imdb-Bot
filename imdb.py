@@ -45,7 +45,7 @@ def query_text(m):
 <b>Movie time</b> : {}
 <b>Movie sort</b> : {}
 <b>Language</b> : {}
-            """.format(title,year,runtime,genre,language), parse_mode='HTML')
+            """.format(title,year,runtime,genre,language))
             bot.send_sticker(m.chat.id, open('imdb.jpg'))
         except IOError:
             bot.answer_inline_query(m.id, """
@@ -54,7 +54,7 @@ def query_text(m):
 <b>Movie time</b> : {}
 <b>Movie sort</b> : {}
 <b>Language</b> : {}
-            """.format(title,year,runtime,genre,language), parse_mode='HTML')
+            """.format(title,year,runtime,genre,language))
         except KeyError:
             bot.answer_inline_query(m.id, 'Error')
 
