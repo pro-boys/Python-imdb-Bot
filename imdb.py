@@ -26,10 +26,10 @@ def welcome(m):
     assert ret_msg.message_id
 
 
-@bot.message_handler(regexp='^(/imdb) (.*)')
-def m(m):
+bot.inline_handler(lambda query: len(query.query) > 3)
+def query_text(inline_query):
         try:
-            r = urllib.request.urlopen('http://www.omdbapi.com/?t={}&apikey=435c5745'.format(m.text.replace('/imdb','')))
+            r = urllib.request.urlopen('http://www.omdbapi.com/?t='+ inline_query.query +'&apikey=435c5745')
             data = r.read()
             pjson = json.loads(data)
             title = pjson['Title']
