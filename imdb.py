@@ -29,7 +29,7 @@ def welcome(m):
 @bot.inline_handler(lambda query: len(query.query) > 3)
 def query_text(m):
         try:
-            r = urllib.request.urlopen('http://www.omdbapi.com/?t='+ inline_query.query +'&apikey=435c5745')
+            r = urllib.request.urlopen('http://www.omdbapi.com/?t='+ m.query +'&apikey=435c5745')
             data = r.read()
             pjson = json.loads(data)
             title = pjson['Title']
