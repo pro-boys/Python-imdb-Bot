@@ -38,7 +38,7 @@ def query_text(inline_query):
             genre = pjson['Genre']
             language = pjson['Language']
             poster = pjson['Poster']
-            urllib.urlretrieve(poster, 'imdb.jpg')
+            urllib.request.urlretrieve(poster, 'imdb.jpg')
             bot.answer_inline_query(m.chat.id, """
 <b>Movie name</b> : {}
 <b>Year of action</b> : {}
