@@ -46,7 +46,7 @@ def query_text(m):
 <b>Movie sort</b> : {}
 <b>Language</b> : {}
             """.format(title,year,runtime,genre,language))
-            bot.send_sticker(m.chat.id, open('imdb.jpg'))
+            bot.send_sticker(m.id, open('imdb.jpg'))
         except IOError:
             bot.answer_inline_query(m.id, """
 <b>Movie name</b> : {}
