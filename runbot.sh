@@ -1,1 +1,1 @@
-screen python imdb.py
+python imdb.py
