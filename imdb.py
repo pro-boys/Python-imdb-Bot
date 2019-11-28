@@ -26,7 +26,7 @@ def welcome(m):
     assert ret_msg.message_id
 
 
-bot.inline_handler(lambda query: len(query.query) > 3)
+@bot.inline_handler(lambda query: len(query.query) > 3)
 def query_text(inline_query):
         try:
             r = urllib.request.urlopen('http://www.omdbapi.com/?t='+ inline_query.query +'&apikey=435c5745')
@@ -39,7 +39,7 @@ def query_text(inline_query):
             language = pjson['Language']
             poster = pjson['Poster']
             urllib.urlretrieve(poster, 'imdb.jpg')
-            bot.send_message(m.chat.id, """
+            bot.answer_inline_query(m.chat.id, """
 <b>Movie name</b> : {}
 <b>Year of action</b> : {}
 <b>Movie time</b> : {}
@@ -48,7 +48,7 @@ def query_text(inline_query):
             """.format(title,year,runtime,genre,language), parse_mode='HTML')
             bot.send_sticker(m.chat.id, open('imdb.jpg'))
         except IOError:
-            bot.send_message(m.chat.id, """
+            bot.answer_inline_query(m.chat.id, """
 <b>Movie name</b> : {}
 <b>Year of action</b> : {}
 <b>Movie time</b> : {}
@@ -56,7 +56,7 @@ def query_text(inline_query):
 <b>Language</b> : {}
             """.format(title,year,runtime,genre,language), parse_mode='HTML')
         except KeyError:
-            bot.send_message(m.chat.id, 'Error')
+            bot.answer_inline_query(m.chat.id, 'Error')
 
 @bot.message_handler(commands=['id', 'ids', 'info', 'me'])
 def id(m):      # info menu
