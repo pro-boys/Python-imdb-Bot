@@ -1,6 +1,4 @@
 import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
 import telebot
 from telebot import types
 import json
@@ -12,8 +10,6 @@ from time import sleep
 import sys
 import re
 import urllib
-reload(sys)
-sys.setdefaultencoding("utf-8")
 
 Token = '928020954:AAHfzgY37UftXhv-uH8WyE_wbAk09N6KQ6o'
 owner = '184018132'
