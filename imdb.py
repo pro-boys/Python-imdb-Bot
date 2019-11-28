@@ -39,7 +39,7 @@ def query_text(m):
             language = pjson['Language']
             poster = pjson['Poster']
             urllib.request.urlretrieve(poster, 'imdb.jpg')
-            bot.answer_inline_query(m.chat.id, """
+            bot.answer_inline_query(m.id, """
 <b>Movie name</b> : {}
 <b>Year of action</b> : {}
 <b>Movie time</b> : {}
@@ -48,7 +48,7 @@ def query_text(m):
             """.format(title,year,runtime,genre,language), parse_mode='HTML')
             bot.send_sticker(m.chat.id, open('imdb.jpg'))
         except IOError:
-            bot.answer_inline_query(m.chat.id, """
+            bot.answer_inline_query(m.id, """
 <b>Movie name</b> : {}
 <b>Year of action</b> : {}
 <b>Movie time</b> : {}
@@ -56,7 +56,7 @@ def query_text(m):
 <b>Language</b> : {}
             """.format(title,year,runtime,genre,language), parse_mode='HTML')
         except KeyError:
-            bot.answer_inline_query(m.chat.id, 'Error')
+            bot.answer_inline_query(m.id, 'Error')
 
 @bot.message_handler(commands=['id', 'ids', 'info', 'me'])
 def id(m):      # info menu
