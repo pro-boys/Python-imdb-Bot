@@ -29,7 +29,7 @@ def welcome(m):
 @bot.message_handler(regexp='^(/imdb) (.*)')
 def m(m):
         try:
-            r = urllib.request.urlopen('http://www.omdbapi.com/?t={}&'.format(m.text.replace('/imdb','')))
+            r = urllib.request.urlopen('http://www.omdbapi.com/?t={}&apikey=435c5745'.format(m.text.replace('/imdb','')))
             data = r.read()
             pjson = json.loads(data)
             title = pjson['Title']
