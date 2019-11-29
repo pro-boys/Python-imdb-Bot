@@ -41,13 +41,10 @@ def query_text(m):
             urllib.request.urlretrieve(poster, 'imdb.jpg')
 
  resultcap = 'Movie name : {}\nYear of action : {}\nMovie time : {}\nMovie sort : {}\nLanguage : {}'.format(title, year, runtime, genre, language)
-            bot.send_sticker(m.id, open('imdb.jpg'))
-        except IOError:
-resultcap = 'Movie name : {}\nYear of action : {}\nMovie time : {}\nMovie sort : {}\nLanguage : {}'.format(title, year, runtime, genre, language)
-        except KeyError:
+ result = types.InlineQueryResultPhoto(poster, caption=resultcap)
+bot.answer_inline_query(m.id, result, cache_time=1)  
+ except KeyError:
             bot.answer_inline_query(m.id, 'Error')
-result = types.InlineQueryResultPhoto(poster, caption=resultcap)
-bot.answer_inline_query(m.id, result, cache_time=1)
 
 @bot.message_handler(commands=['id', 'ids', 'info', 'me'])
 def id(m):      # info menu
