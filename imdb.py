@@ -40,7 +40,11 @@ def query_text(m):
             poster = pjson['Poster']
             urllib.request.urlretrieve(poster, 'imdb.jpg')
 
- resultcap = 'Movie name : {}\nYear of action : {}\nMovie time : {}\nMovie sort : {}\nLanguage : {}'.format(title, year, runtime, genre, language)
+ resultcap = """Movie name : {}
+Year of action : {}
+Movie time : {}
+Movie sort : {}
+Language : {}""".format(title, year, runtime, genre, language)
  result = types.InlineQueryResultPhoto(poster, caption=resultcap)
 bot.answer_inline_query(m.id, result, cache_time=1)  
  except KeyError:
