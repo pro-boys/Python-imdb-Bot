@@ -10,6 +10,8 @@ from time import sleep
 import sys
 import re
 import urllib
+from telebot import types  # Tipos para la API del bot.
+
 
 Token = '928020954:AAHfzgY37UftXhv-uH8WyE_wbAk09N6KQ6o'
 owner = '184018132'
