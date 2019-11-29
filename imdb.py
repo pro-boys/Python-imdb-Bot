@@ -39,24 +39,17 @@ def query_text(m):
             language = pjson['Language']
             poster = pjson['Poster']
             urllib.request.urlretrieve(poster, 'imdb.jpg')
-            bot.answer_inline_query(m.id, """
-<b>Movie name</b> : {}
-<b>Year of action</b> : {}
-<b>Movie time</b> : {}
-<b>Movie sort</b> : {}
-<b>Language</b> : {}
-            """.format(title,year,runtime,genre,language))
+show_list = []
+
+ resultcap = "Movie name : {}\nYear of action : {}\nMovie time : {}\nMovie sort : {}\nLanguage : {}".format(title,year,runtime,genre,language)
             bot.send_sticker(m.id, open('imdb.jpg'))
         except IOError:
-            bot.answer_inline_query(m.id, """
-<b>Movie name</b> : {}
-<b>Year of action</b> : {}
-<b>Movie time</b> : {}
-<b>Movie sort</b> : {}
-<b>Language</b> : {}
-            """.format(title,year,runtime,genre,language))
+resultcap = "Movie name : {}\nYear of action : {}\nMovie time : {}\nMovie sort : {}\nLanguage : {}".format(title,year,runtime,genre,language)
         except KeyError:
             bot.answer_inline_query(m.id, 'Error')
+result = types.InlineQueryResultPhoto(poster, caption=resultcap)
+show_list.append(result)
+bot.answer_inline_query(m.id, show_list, cache_time=1)
 
 @bot.message_handler(commands=['id', 'ids', 'info', 'me'])
 def id(m):      # info menu
