@@ -39,7 +39,6 @@ def query_text(m):
             language = pjson['Language']
             poster = pjson['Poster']
             urllib.request.urlretrieve(poster, 'imdb.jpg')
-show_list = []
 
  resultcap = "Movie name : {}\nYear of action : {}\nMovie time : {}\nMovie sort : {}\nLanguage : {}".format(title,year,runtime,genre,language)
             bot.send_sticker(m.id, open('imdb.jpg'))
@@ -48,8 +47,7 @@ resultcap = "Movie name : {}\nYear of action : {}\nMovie time : {}\nMovie sort :
         except KeyError:
             bot.answer_inline_query(m.id, 'Error')
 result = types.InlineQueryResultPhoto(poster, caption=resultcap)
-show_list.append(result)
-bot.answer_inline_query(m.id, show_list, cache_time=1)
+bot.answer_inline_query(m.id, result, cache_time=1)
 
 @bot.message_handler(commands=['id', 'ids', 'info', 'me'])
 def id(m):      # info menu
